@@ -7,8 +7,8 @@ let appendText fileName text =
     File.AppendAllText(fileName, text)
 
 let generatePixel i j x =
-    let r = (float i / 255.0) * x
-    let g = (float (255 - j) / 255.0) * x
+    let r = (float j / 255.0) * x
+    let g = (float (255 - i) / 255.0) * x
     let b = 0.25 * x
     let a = [int r; int g; int b]
     $"{a.[0]} {a.[1]} {a.[2]}\n"
@@ -19,9 +19,6 @@ let main argv =
     let arr =
         Array2D.create 256 256 255.999
         |> Array2D.mapi generatePixel
+        |> Array2D.iter (fun x -> appendText "out.ppm" x)
 
-    for i in 0 .. 255 do
-        printfn $"Scanlines remaining {256 - i}"
-        for j in 0 .. 255 do
-            appendText "out.ppm" arr.[j, i]
     0 
