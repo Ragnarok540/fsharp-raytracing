@@ -1,0 +1,9 @@
+*.exe
+*.dll
+/bin
+/obj/Debug
+*.ppm
+
+.fake
+.ionide
+.DS_Store
