@@ -2,6 +2,7 @@
 *.dll
 /bin
 /obj/Debug
+tests/obj/Debug
 *.ppm
 
 .fake
